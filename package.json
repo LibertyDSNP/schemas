@@ -21,8 +21,15 @@
   },
   "homepage": "https://github.com/LibertyDSNP/schemas#readme",
   "dependencies": {
+    "ts-node": "^10.8.1",
+    "typescript": "^4.7.4"
+  },
+  "devDependencies": {
     "@dsnp/parquetjs": "^1.2.1",
+    "@dsnp/test-generators": "^0.1.0",
     "@types/jest": "^28.1.6",
+    "@typescript-eslint/eslint-plugin": "^5.31.0",
+    "@typescript-eslint/parser": "^5.31.0",
     "avro-js": "^1.11.0",
     "eslint": "^8.20.0",
     "eslint-config-prettier": "^8.5.0",
@@ -31,8 +38,6 @@
     "eslint-plugin-prettier": "^4.2.1",
     "jest": "^28.1.3",
     "prettier": "^2.7.1",
-    "ts-jest": "^28.0.7",
-    "ts-node": "^10.8.1",
-    "typescript": "^4.7.4"
+    "ts-jest": "^28.0.7"
   }
 }

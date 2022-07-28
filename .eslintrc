@@ -6,12 +6,15 @@
     "ecmaVersion": 12,
     "sourceType": "module"
 },
+"parser": "@typescript-eslint/parser",
   "plugins": [
+    "@typescript-eslint",
     "prettier",
     "jest",
     "import"
   ],
   "extends": [
+    "plugin:@typescript-eslint/recommended",
     "eslint:recommended",
     "plugin:jest/recommended",
     "prettier"
