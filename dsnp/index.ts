@@ -196,10 +196,11 @@ export const getSchema = (name: SchemaName): Deploy | null => {
 export type SchemaMapping = { [schemaName: string]: { [version: string]: number } };
 const chainMapping: { [genesisHash: string]: SchemaMapping } = {};
 
-export const GENESIS_HASH_TESTNET = "0x0c33dfffa907de5683ae21cc6b4af899b5c4de83f3794ed75b2dc74e1b088e72";
+export const GENESIS_HASH_TESTNET_ROCOCO = "0x0c33dfffa907de5683ae21cc6b4af899b5c4de83f3794ed75b2dc74e1b088e72";
+export const GENESIS_HASH_TESTNET_PASEO = "0x203c6838fc78ea3660a2f298a58d859519c72a5efdc0f194abd6f0d5ce1838e0";
 export const GENESIS_HASH_MAINNET = "0x4a587bf17a404e3572747add7aab7bbe56e805a5479c6c436f07f36fcc8d3ae1";
 
-chainMapping[GENESIS_HASH_TESTNET] = {
+chainMapping[GENESIS_HASH_TESTNET_ROCOCO] = {
   tombstone: { "1.2": 1 },
   broadcast: { "1.2": 2 },
   reply: { "1.2": 3 },
@@ -211,6 +212,19 @@ chainMapping[GENESIS_HASH_TESTNET] = {
   "private-follows": { "1.2": 14 },
   "private-connections": { "1.2": 15 },
   "public-key-assertion-method": { "1.3": 100 },
+};
+chainMapping[GENESIS_HASH_TESTNET_PASEO] = {
+  tombstone: { "1.2": 1 },
+  broadcast: { "1.2": 2 },
+  reply: { "1.2": 3 },
+  reaction: { "1.1": 4 },
+  profile: { "1.2": 6 },
+  update: { "1.2": 5 },
+  "public-key-key-agreement": { "1.2": 7 },
+  "public-follows": { "1.2": 8 },
+  "private-follows": { "1.2": 9 },
+  "private-connections": { "1.2": 10 },
+  "public-key-assertion-method": { "1.3": 11 },
 };
 chainMapping[GENESIS_HASH_MAINNET] = {
   tombstone: { "1.2": 1 },
