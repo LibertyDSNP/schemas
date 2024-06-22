@@ -5,7 +5,7 @@ import { FrequencyParquetSchema } from "../types/frequency.js";
 import broadcast from "./broadcast.js";
 // Deprecated
 // import graphChange from "./dsnp/graphChange.js";
-import profile from "./profile.js";
+// import profile from "./profile.js";
 import reaction from "./reaction.js";
 import reply from "./reply.js";
 import tombstone from "./tombstone.js";
@@ -14,10 +14,10 @@ import userPublicFollows from "./userPublicFollows.js";
 import userPrivateFollows from "./userPrivateFollows.js";
 import userPrivateConnections from "./userPrivateConnections.js";
 import update from "./update.js";
+import profileResource from "./profileResource.js";
 
 export {
   broadcast,
-  profile,
   reaction,
   reply,
   tombstone,
@@ -26,6 +26,7 @@ export {
   userPrivateConnections,
   userPublicFollows,
   update,
+  profileResource,
 };
 
 type PayloadLocation = "IPFS" | "OnChain" | "Itemized" | "Paginated";
@@ -68,7 +69,8 @@ export type AvroSchemaName =
   | "public-key-assertion-method"
   | "public-follows"
   | "private-follows"
-  | "private-connections";
+  | "private-connections"
+  | "profile-resources";
 
 export type SchemaName = ParquetSchemaName | AvroSchemaName;
 
@@ -114,16 +116,6 @@ export const schemas = new Map<SchemaName, Deploy>([
       payloadLocation: "IPFS",
       settings: [],
       dsnpVersion: "1.1",
-    },
-  ],
-  [
-    "profile",
-    {
-      model: profile,
-      modelType: "Parquet",
-      payloadLocation: "IPFS",
-      settings: [],
-      dsnpVersion: "1.2",
     },
   ],
   [
@@ -186,6 +178,16 @@ export const schemas = new Map<SchemaName, Deploy>([
       dsnpVersion: "1.3",
     },
   ],
+  [
+    "profile-resources",
+    {
+      model: profileResource,
+      modelType: "AvroBinary",
+      payloadLocation: "Itemized",
+      settings: [],
+      dsnpVersion: "1.3",
+    },
+  ],
 ]);
 
 export const getSchema = (name: SchemaName): Deploy | null => {
@@ -205,39 +207,39 @@ chainMapping[GENESIS_HASH_TESTNET_ROCOCO] = {
   broadcast: { "1.2": 2 },
   reply: { "1.2": 3 },
   reaction: { "1.1": 4 },
-  profile: { "1.2": 5 },
   update: { "1.2": 6 },
   "public-key-key-agreement": { "1.2": 18 },
   "public-follows": { "1.2": 13 },
   "private-follows": { "1.2": 14 },
   "private-connections": { "1.2": 15 },
   "public-key-assertion-method": { "1.3": 100 },
+  // "profile-resources": { "1.3": TBD },
 };
 chainMapping[GENESIS_HASH_TESTNET_PASEO] = {
   tombstone: { "1.2": 1 },
   broadcast: { "1.2": 2 },
   reply: { "1.2": 3 },
   reaction: { "1.1": 4 },
-  profile: { "1.2": 6 },
   update: { "1.2": 5 },
   "public-key-key-agreement": { "1.2": 7 },
   "public-follows": { "1.2": 8 },
   "private-follows": { "1.2": 9 },
   "private-connections": { "1.2": 10 },
   "public-key-assertion-method": { "1.3": 11 },
+  // "profile-resources": { "1.3": TBD },
 };
 chainMapping[GENESIS_HASH_MAINNET] = {
   tombstone: { "1.2": 1 },
   broadcast: { "1.2": 2 },
   reply: { "1.2": 3 },
   reaction: { "1.1": 4 },
-  profile: { "1.2": 6 },
   update: { "1.2": 5 },
   "public-key-key-agreement": { "1.2": 7 },
   "public-follows": { "1.2": 8 },
   "private-follows": { "1.2": 9 },
   "private-connections": { "1.2": 10 },
   // TBD "public-key-assertion-method": { "1.3": 11? },
+  // "profile-resources": { "1.3": TBD },
 };
 /*
  * Schema in "default" deployments (e.g. to a clean local chain) are
@@ -250,13 +252,13 @@ chainMapping["default"] = {
   broadcast: { "1.2": 2 },
   reply: { "1.2": 3 },
   reaction: { "1.1": 4 },
-  profile: { "1.2": 5 },
-  update: { "1.2": 6 },
-  "public-key-key-agreement": { "1.2": 7 },
-  "public-follows": { "1.2": 8 },
-  "private-follows": { "1.2": 9 },
-  "private-connections": { "1.2": 10 },
-  "public-key-assertion-method": { "1.3": 11 },
+  update: { "1.2": 5 },
+  "public-key-key-agreement": { "1.2": 6 },
+  "public-follows": { "1.2": 7 },
+  "private-follows": { "1.2": 8 },
+  "private-connections": { "1.2": 9 },
+  "public-key-assertion-method": { "1.3": 10 },
+  "profile-resources": { "1.3": 11 },
 };
 
 /**
