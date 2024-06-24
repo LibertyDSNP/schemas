@@ -89,14 +89,14 @@ DEPLOY_SCHEMA_ENDPOINT_URL="ws://localhost:9944"
 e.g.
 
 ```sh
-DEPLOY_SCHEMA_ACCOUNT_URI="//Bob" DEPLOY_SCHEMA_ENDPOINT_URL="ws://127.0.0.1:9944" npm run deploy profile
+DEPLOY_SCHEMA_ACCOUNT_URI="//Bob" DEPLOY_SCHEMA_ENDPOINT_URL="ws://127.0.0.1:9944" npm run deploy profile-resources
 ```
 
 ### To register a single schema
 
-e.g. To register the "profile" schema
+e.g. To register the "profile-resources" schema
 
-    npm run deploy profile
+    npm run deploy profile-resources
 
 **Note:** Requires a sudo key if deploying to a testnet.
 Mainnet will use the proposal system (`proposeToCreateSchema`).
@@ -141,7 +141,7 @@ There are 8 schemas on the connected chain.
 │    0    │     'schema_id'      │              '1'              │
 │    1    │     'model_type'     │           'Parquet'           │
 │    2    │  'payload_location'  │            'IPFS'             │
-│    3    │ 'matchesDSNPSchemas' │ 'dsnp.broadcast,dsnp.profile' │
+│    3    │ 'matchesDSNPSchemas' │       'dsnp.broadcast'        │
 └─────────┴──────────────────────┴───────────────────────────────┘
 
 ## Schema Model
