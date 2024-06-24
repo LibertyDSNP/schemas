@@ -223,7 +223,7 @@ chainMapping[GENESIS_HASH_TESTNET_PASEO] = {
   "private-follows": { "1.2": 9 },
   "private-connections": { "1.2": 10 },
   "public-key-assertion-method": { "1.3": 11 },
-  // "profile-resources": { "1.3": TBD },
+  "profile-resources": { "1.3": 569 },
 };
 chainMapping[GENESIS_HASH_MAINNET] = {
   tombstone: { "1.2": 1 },
