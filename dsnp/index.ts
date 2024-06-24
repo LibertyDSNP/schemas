@@ -3,9 +3,6 @@ import { ApiPromise } from "@polkadot/api";
 import { FrequencyParquetSchema } from "../types/frequency.js";
 
 import broadcast from "./broadcast.js";
-// Deprecated
-// import graphChange from "./dsnp/graphChange.js";
-// import profile from "./profile.js";
 import reaction from "./reaction.js";
 import reply from "./reply.js";
 import tombstone from "./tombstone.js";
@@ -63,7 +60,7 @@ type AvroDeploy = {
 
 export type Deploy = ParquetDeploy | AvroDeploy;
 
-export type ParquetSchemaName = "broadcast" | "profile" | "reaction" | "reply" | "tombstone" | "update";
+export type ParquetSchemaName = "broadcast" | "reaction" | "reply" | "tombstone" | "update";
 export type AvroSchemaName =
   | "public-key-key-agreement"
   | "public-key-assertion-method"
