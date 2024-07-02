@@ -11,7 +11,7 @@ export default {
     },
     {
       name: "cid",
-      type: "string",
+      type: "bytes",
       doc: "Content IDentifier of resource",
     },
     {

@@ -11,11 +11,11 @@ describe("Profile Resource Schema", () => {
     const parsed = avro.parse(profileResourceSchema);
     const obj = {
       type: 1,
-      cid: "bafkreifjjcie6lypi6ny7amxnfftagclbuxndqonfipmb64f2km2devei4",
+      cid: Buffer.from("01551220a948904f2f0f479b8f8197694b30184b0d2ed1c1cd2a1ec0fb85d299a192a447", "hex"),
       length: 300,
     };
     const buf = parsed.toBuffer(obj);
-    expect(buf).toHaveLength(63);
+    expect(buf).toHaveLength(40);
     const output = parsed.fromBuffer(buf);
     expect(output).toMatchObject(obj);
   });
